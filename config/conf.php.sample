@@ -1,0 +1,40 @@
+<?php
+class Conf
+{
+
+    static $debug = 1;
+
+    static $databases = array(
+        'default' => array(
+            'host' => 'localhost',
+            'port' => ':3306',
+            'database' => 'db',
+            'login' => 'user',
+            'password' => 'pwd'
+        )
+    );
+
+    static $siteName = 'Nom du site';
+    static $navBarName = "Nom du Site";
+
+
+    static $ExternalUrl = "http://127.0.0.1";
+}
+
+/**
+ * Prefiexes
+ */
+Router::prefix('console', 'admin');
+
+/**
+ * Admin Routes
+ */
+Router::connect('admin', 'admin/clients/index');
+
+/**
+ * Guest Routes
+ */
+Router::connect('qr/:id/:token', 'client/qrlogin/id:([0-9]+)/token:([a-zA-Z0-9\-]+)');
+
+
+?>
