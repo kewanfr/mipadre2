@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 <h2 class="text-center">Liste des Clients</h2>
-<a type="button" class="btn btn-primary mb-4" href="<?= Router::url("admin/clients/edit/") ?>">Ajouter un client</a>
+<a type="button" class="btn btn-info mb-4" href="<?= Router::url("admin/clients/edit/") ?>">Ajouter un client</a>
 
 <table id="cavistes-table" class="table table-striped table-bordered table-hover display">
   <thead>
@@ -26,15 +26,14 @@
         }
         ?>
 
-        
-      <tr onclick="window.location.href = <?= '\'' . Router::url('admin/clients/edit/' . $client->ID) . '\'' ?>;">
-        <th scope="row"><?= $client->ID ?></th>
+      <tr onclick="window.location.href = <?= '\'' . Router::url('admin/clients/edit/' . $client->id) . '\'' ?>;">
+        <th scope="row"><?= $client->id ?></th>
         <td><span class="badge badge-<?= $badgeColor ?>"><?= $client->nb_bouteilles ?></span></td>
         <td class="bold"><?= $client->name ?></td>
         <td><?= $client->adresse ?></td>
         <td>
-          <a type="button" class="btn btn-warning btn-sm" href="<?= Router::url("admin/clients/edit/" . $client->ID) ?>">Editer</a>
-          <a type="button" class="btn btn-secondary btn-sm" href="<?= Router::url("admin/clients/generateqr/" . $client->ID) ?>">QR Code</a>
+          <a type="button" class="btn btn-info btn-sm" href="<?= Router::url("admin/clients/edit/" . $client->id) ?>">Editer</a>
+          <a type="button" class="btn btn-warning btn-sm" href="<?= Router::url("admin/clients/generateqr/" . $client->id) ?>">QR Code</a>
         </td>
       </tr>
 

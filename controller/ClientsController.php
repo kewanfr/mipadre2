@@ -11,6 +11,17 @@ class ClientsController extends Controller
 
     $this->loadModel('Guest');
     $this->loadModel('Client');
+    $d['client'] = $this->Client->findFirst(
+      array(
+        'conditions' => array(
+          'id' => $id
+        )
+      )
+    );
+    if(empty($d['client'])){
+      $this->e404('Cette page n\'existe pas');
+    }
+
     $d['guest'] = $this->Guest->findFirst(
       array(
         'conditions' => array(
@@ -33,13 +44,6 @@ class ClientsController extends Controller
     }
     $d['client_id'] = $d['guest']->client_id;
     $d['QRToken'] = $d['guest']->QRToken;
-    $d['client'] = $this->Client->findFirst(
-      array(
-        'conditions' => array(
-          'id' => $id
-        )
-      )
-    );
     $d['title'] = "QR Code de ".$d['client']->name;
 
     $this->set($d);
@@ -48,18 +52,30 @@ class ClientsController extends Controller
   function admin_edit($id = null){
     $this->loadModel('Client');
 
+    if(isset($id)){
+      $d['mode'] = "edit";
+      $d['id'] = $id;
+    }else {
+      $d['mode'] = "add";
+      $d['title'] = "Ajouter un client";
+    }
+
     if($this->request->data){
-      $data = $this->request->data;
-      $this->request->data->id = $id;
-      $this->Client->save($this->request->data);
+      
       $d['title'] = "Modifier ".$this->request->data->name;
-      if($data->ID){
+      if($d['mode'] == "edit"){
+        $this->request->data->id = $id;
+        $this->Client->save($this->request->data);
         $this->Session->setFlash("Informations modifiées avec succès !");
       }else{
-        $this->Session->setFlash("Client créé avec succès !");
+        $newID = $this->Client->save($this->request->data);
+        $this->request->data->id = $newID;
+        $this->Session->setFlash("Client créé avec succès !", "success", 2);
+        $this->redirect('admin/clients/edit/'.$newID);
       }
-    }else{
-      if($id){
+      $d['mode'] = "edit";
+
+    }else if($d['mode'] == "edit"){
         $this->request->data = $this->Client->findFirst(
           array(
             'conditions' => array(
@@ -71,12 +87,8 @@ class ClientsController extends Controller
           $this->e404('Cette page n\'existe pas');
         }
         $d['title'] = "Modifier ".$this->request->data->name;
-        $d["id"] = $id;
-      }else {
-        
-        $d['title'] = "Ajouter un client";
       }
-    }
+
 
     $this->set($d);
   }

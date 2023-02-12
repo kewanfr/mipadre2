@@ -5,9 +5,8 @@ $qc = new QRCode();
 $qc->URL($url);
 ?>
 
-<?= $code ?>
-  <h1><?= $title ?></h1>
-  <p><a href="<?= $url ?>" target="_blank">Lien du qr code</a></p>
-  <img src="<?= $qc->QRCODEURL(300); ?>" alt="QR Code">
+<h1><?= $title ?></h1>
+<p><a href="<?= $url ?>" target="_blank">Lien du qr code</a></p>
+<img src="<?= $qc->QRCODEURL(300); ?>" alt="QR Code">
 
   
