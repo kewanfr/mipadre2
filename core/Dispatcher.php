@@ -20,7 +20,8 @@ class Dispatcher
     //   return $this->error('Le controlleur ' . $this->request->controller . ' n\'existe pas');
     // }
     if (!in_array($action, array_diff(get_class_methods($controller), get_class_methods('Controller')))) {
-      return $this->error('Le controlleur ' . $this->request->controller . ' n\'a pas de méthode ' . $action);
+      // return $this->error('Le controlleur ' . $this->request->controller . ' n\'a pas de méthode ' . $action);
+      return $this->error("Cette page n'existe pas");
     }
 
     call_user_func_array(array($controller, $action), $this->request->params);
@@ -38,7 +39,8 @@ class Dispatcher
     $name = ucfirst($this->request->controller . 'Controller');
     $file = ROOT . DS . 'controller' . DS . $name . '.php';
     if (!file_exists($file)) {
-      return $this->error('Le controlleur ' . $this->request->controller . ' n\'existe pas');
+      // return $this->error('Le controlleur ' . $this->request->controller . ' n\'existe pas');
+      return $this->error("Cette page n'existe pas");
     }
     require $file;
     $controller = new $name($this->request);

@@ -79,6 +79,18 @@ class Controller
   }
 
   /**
+   * Permet de gérer les erreurs 401
+   */
+  function e401($message)
+  {
+    header("HTTP/1.0 401 Unauthorized");
+    $this->set('message', $message);
+
+    $this->render('/errors/401');
+    die();
+  }
+
+  /**
    * Permet d'appeler un controleur depuis une vue
    */
   function request($controller, $action)

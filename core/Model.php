@@ -9,11 +9,9 @@ class Model{
     public $primaryKey = 'ID';
 
     public function __construct(){
-        // J'initialise quelques variables
         if($this->table === false){
             $this->table = strtolower(get_class($this)).'s';
         }
-
         $conf = Conf::$databases[$this->conf];
         if(isset(Model::$connections[$this->conf])){
             $this->db = Model::$connections[$this->conf];
@@ -26,8 +24,9 @@ class Model{
                 $conf['password'],
                 array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8')
             );
+
             if(Conf::$debug >= 1){
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             }
 
             Model::$connections[$this->conf] = $pdo;
@@ -75,13 +74,31 @@ class Model{
                 $sql .= implode(' AND ', $cond);
             }
         }
+        //Construction de la condition
+        if(isset($req['conditionsor'])){
+            //$sql .= 'WHERE '.$req['conditions'];
+            $sql .= 'WHERE ';
+            if(!is_array($req['conditionsor'])){
+                $sql .= $req['conditionsor']; 
+            }else {
+                $cond = array();
+                foreach($req['conditionsor'] as $k => $v){
+                    if(!is_numeric($v)){
+                        $v = '"'.addslashes($v).'"';
+                        //$cond[] = $k.'='.$v;
+                    }
+                    $cond[] = "$k=$v";
+                    
+                }
+                $sql .= implode(' OR ', $cond);
+            }
+        }
 
 
         if(isset($req['limit'])){
             //$sql .= 'WHERE '.$req['conditions'];
             $sql .= 'LIMIT '.$req['limit'];
         }
-
 
         $pre = $this->db->prepare($sql);
         $pre->execute();

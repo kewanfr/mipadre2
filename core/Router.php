@@ -48,7 +48,7 @@ class Router
       }
     }
     $request->params = array_slice($params, 2);
-    return true;
+    return $request;
   }
 
   /**
