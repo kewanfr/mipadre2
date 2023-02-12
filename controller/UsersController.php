@@ -56,7 +56,7 @@ class UsersController extends Controller
         $data->password = password_hash($data->password, PASSWORD_DEFAULT);
         $data->role = 'admin';
         $userId = $this->User->save($data);
-        $data->ID = $userId;
+        $data->id = $userId;
         
         $this->Session->write('User', $data);
         $this->Session->setFlash('Inscription Réussie !', 'success');

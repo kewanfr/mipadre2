@@ -6,7 +6,7 @@ class Model{
     public $conf = 'default';
     public $table = false;
     public $db;
-    public $primaryKey = 'ID';
+    public $primaryKey = 'id';
 
     public function __construct(){
         if($this->table === false){

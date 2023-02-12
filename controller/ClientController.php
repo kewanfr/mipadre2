@@ -15,19 +15,19 @@ class ClientController extends Controller
 
     $requestData = $this->Client->findFirst(array(
       'conditions' => array(
-        'ID' => $client->ID
+        'id' => $client->id
       )
     ));
     $requestData->nb_bouteilles = $requestData->nb_bouteilles + 1;
     $this->Client->save($requestData);
     
-    $d['title'] = $client->name;
-    $d['id'] = $client->ID;
+    $d['id'] = $client->id;
     $d['client'] = $this->Client->findFirst(array(
       'conditions' => array(
-        'ID' => $client->ID
+        'id' => $client->id
       )
     ));
+    $d['title'] = $d['client']->name;
 
     $this->set($d);
 
@@ -46,17 +46,17 @@ class ClientController extends Controller
     $this->loadModel('Client');
     $requestData = $this->Client->findFirst(array(
       'conditions' => array(
-        'ID' => $client->ID
+        'id' => $client->id
       )
     ));
 
-    $d['title'] = $client->name;
-    $d['id'] = $client->ID;
+    $d['id'] = $client->id;
     $d['client'] = $this->Client->findFirst(array(
-      'conditions' => array(
-        'ID' => $client->ID
+    'conditions' => array(
+      'id' => $client->id
       )
     ));
+    $d['title'] = $d['client']->name;
 
     $this->set($d);
     $this->render("edit");
@@ -76,13 +76,13 @@ class ClientController extends Controller
       $this->Session->setFlash('Nombre de bouteilles mis à jour avec succès !', 'success');
     }
 
-    $d['title'] = $client->name;
-    $d['id'] = $client->ID;
+    $d['id'] = $client->id;
     $d['client'] = $this->Client->findFirst(array(
       'conditions' => array(
-        'ID' => $client->ID
+        'id' => $client->id
       )
     ));
+    $d['title'] = $d['client']->name;
 
     $this->set($d);
   }
