@@ -21,6 +21,7 @@ class Conf
     static $ExternalUrl = "http://127.0.0.1"; // URL externe du site pour les QRCode (à changer)
 
     static $RegisterToken = "123456789"; // Token pour acceder à la page d'inscription (à changer)
+    static $QRTokenLength = 3; // Longueur du token pour les QRCode (à changer)
 }
 
 /**

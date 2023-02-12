@@ -21,7 +21,7 @@ class ClientsController extends Controller
     if(empty($d['guest'])){
       $guest = $this->Guest->save(array(
         'client_id' => $id,
-        'QRToken' => generateToken(1)
+        'QRToken' => generateToken(Conf::$QRTokenLength)
       ));
       $d['guest'] = $this->Guest->findFirst(
         array(
