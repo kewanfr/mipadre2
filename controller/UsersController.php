@@ -19,8 +19,8 @@ class UsersController extends Controller
         unset($user->password);
         $this->Session->write('User', $user);
         $this->Session->setFlash('Connexion Réussie !', 'success');
-      }
-      else{
+        $this->redirect('admin');
+      }else{
         $this->Session->write('User', null);
         $this->Session->setFlash('Identifiant ou mot de passe incorrect', 'danger');
       }
