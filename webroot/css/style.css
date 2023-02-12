@@ -1,0 +1,6 @@
+@import './navbar.css';
+@import './index.css';
+
+.bold {
+  font-weight: bold;
+}

@@ -1,4 +1,6 @@
 <?php
+include 'functions/QRCode.php';
+
 function debug($var)
 {
 
