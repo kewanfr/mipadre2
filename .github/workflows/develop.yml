@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - develop
-name: 🚀 Deploy website on push
+name: 🚀 Deploy dev website on push on branch develop
 jobs:
   web-deploy:
     name: 🎉 Deploy
@@ -12,7 +12,7 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
     
-    - name: 📂 Sync files
+    - name: 📂 Sync files on dev.mipadre.fr
       uses: SamKirkland/FTP-Deploy-Action@4.3.3
       with:
         server: ${{ secrets.ftp_host }}
