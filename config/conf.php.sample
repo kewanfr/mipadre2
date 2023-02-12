@@ -12,19 +12,21 @@ class Conf
             'login' => 'user',
             'password' => 'pwd'
         )
-    );
+    ); // Configuration de la base de données
 
-    static $siteName = 'Nom du site';
-    static $navBarName = "Nom du Site";
+    static $siteName = 'Nom du site'; // Nom du site Affiché dans le titre de la page
+    static $navBarName = "Nom du Site"; // Nom du site affiché dans la barre de navigation
 
 
-    static $ExternalUrl = "http://127.0.0.1";
+    static $ExternalUrl = "http://127.0.0.1"; // URL externe du site pour les QRCode (à changer)
+
+    static $RegisterToken = "123456789"; // Token pour acceder à la page d'inscription (à changer)
 }
 
 /**
  * Prefiexes
  */
-Router::prefix('console', 'admin');
+Router::prefix('console', 'admin'); // Préfixe pour les pages admin
 
 /**
  * Admin Routes
