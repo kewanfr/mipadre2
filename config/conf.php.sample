@@ -17,6 +17,7 @@ class Conf
     static $siteName = 'Nom du site'; // Nom du site Affiché dans le titre de la page
     static $navBarName = "Nom du Site"; // Nom du site affiché dans la barre de navigation
 
+    static $dbName = 'default'; // Nom de la base de données à utiliser
 
     static $ExternalUrl = "http://127.0.0.1"; // URL externe du site pour les QRCode (à changer)
 
