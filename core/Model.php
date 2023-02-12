@@ -3,7 +3,7 @@ class Model{
 
     static $connections = array();
 
-    public $conf = Conf::$dbName;
+    public $conf = 'default';
     public $table = false;
     public $db;
     public $primaryKey = 'id';
