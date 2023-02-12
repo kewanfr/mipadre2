@@ -1,4 +1,8 @@
-on: push
+on:
+  # Trigger the workflow on push or pull request
+  push:
+    branches:
+      - main
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
@@ -14,3 +18,4 @@ jobs:
         server: ${{ secrets.ftp_host }}
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
+        server-dir: /consigne.mipadre.fr/
