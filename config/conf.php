@@ -18,7 +18,7 @@ class Conf
     static $versionDate = "13 Fev"; // Date de la version
     static $version;
 
-    static $copyRight = "&copy;2023 Kéwan B"; // Texte du copyRight
+    static $copyright = "&copy;2023 Kéwan B"; // Texte du copyRight
     static $author = "Kewan B"; // Auteur du site
 
     public function __construct()
