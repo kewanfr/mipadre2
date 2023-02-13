@@ -30,7 +30,7 @@ function generateToken($length = 32)
 function generateQR($id, $token)
 {
   $URI = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'];
-  $code = Conf::$ExternalUrl . Router::url("users/qrlogin/$id/$token");
+  $code = SecureConf::$ExternalUrl . Router::url("users/qrlogin/$id/$token");
   $generateUrl = 'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=' . $code . '&choe=UTF-8';
   return $generateUrl;
 }
