@@ -11,9 +11,7 @@
 
   <link rel="stylesheet" href="<?= Router::webroot("css/style.css") ?>">
 
-  <title>
-    <?php echo isset($title_for_layout) ? $title_for_layout : Conf::$siteName; ?>
-  </title>
+  <title><?php echo isset($title_for_layout) ? $title_for_layout : Conf::$siteName; ?></title>
 
 </head>
 

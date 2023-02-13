@@ -12,9 +12,7 @@
 
   <link rel="stylesheet" href="<?= Router::webroot("css/style.css") ?>">
 
-  <title>
-    Administration | <?php echo isset($title_for_layout) ? $title_for_layout : Conf::$siteName; ?>
-  </title>
+  <title>Administration | <?php echo isset($title_for_layout) ? $title_for_layout : Conf::$siteName; ?></title>
 
 </head>
 
@@ -67,6 +65,6 @@
   </main>
 
   <?php require "elements/footer.php" ?>
-</body>s
+</body>
 
 </html>
