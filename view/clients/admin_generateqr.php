@@ -1,5 +1,5 @@
 <?php 
-$url = Conf::$ExternalUrl.Router::url("qr/$client_id/$QRToken");
+$url = SecureConf::$ExternalUrl.Router::url("qr/$client_id/$QRToken");
 
 $qc = new QRCode();
 $qc->URL($url);

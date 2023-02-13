@@ -37,7 +37,7 @@ class UsersController extends Controller
 
   function register($token = null)
   {
-    if(!isset($token) || $token !== Conf::$RegisterToken){
+    if(!isset($token) || $token !== SecureConf::$RegisterToken){
       $this->e401("Accès non autorisé");
     }
     if($this->request->data)
